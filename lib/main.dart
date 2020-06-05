@@ -65,7 +65,7 @@ class CocktailApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: true,
+      debugShowCheckedModeBanner: false,
       title: 'Cocktail App',
       theme: CocktailAppTheme.of(context),
       onGenerateRoute: _registerRoutesWithParameters,

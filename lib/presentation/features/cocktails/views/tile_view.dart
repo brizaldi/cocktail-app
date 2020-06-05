@@ -6,6 +6,7 @@
  */
 
 import 'package:cocktailapp/config/routes.dart';
+import 'package:cocktailapp/config/size_config.dart';
 import 'package:cocktailapp/config/theme.dart';
 import 'package:cocktailapp/presentation/features/cocktail_details/cocktail_screen.dart';
 import 'package:cocktailapp/presentation/widgets/data_driven/cocktail_list_view.dart';
@@ -18,13 +19,14 @@ import '../cocktails.dart';
 class CocktailsTileView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
     return BlocBuilder<CocktailsBloc, CocktailsState>(builder: (context, state) {
       return SliverGrid(
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
           mainAxisSpacing: 4.0,
           crossAxisSpacing: 4.0,
-          childAspectRatio: AppSizes.tile_width / AppSizes.tile_height,
+          childAspectRatio: SizeConfig.screenWidth / SizeConfig.screenHeight,
         ),
         delegate: SliverChildBuilderDelegate(
               (BuildContext context, int index) {

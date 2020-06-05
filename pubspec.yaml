@@ -18,7 +18,6 @@ dependencies:
   rxdart: ^0.24.1
   http: ^0.12.1
   data_connection_checker: ^0.3.4
-  flutter_screenutil: ^1.1.0
   flutter_launcher_icons: ^0.7.5
 
 dev_dependencies:

@@ -5,6 +5,7 @@
  *
  */
 
+import 'package:cocktailapp/config/size_config.dart';
 import 'package:cocktailapp/config/theme.dart';
 import 'package:cocktailapp/data/model/category.dart';
 import 'package:cocktailapp/data/model/cocktail.dart';
@@ -12,7 +13,6 @@ import 'package:cocktailapp/presentation/widgets/data_driven/cocktail_list_view.
 import 'package:cocktailapp/presentation/widgets/independent/expansion_tile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../cocktail.dart';
 
@@ -44,9 +44,9 @@ class _CocktailDetailsViewState extends State<CocktailDetailsView> {
   Widget build(BuildContext context) {
     var _theme = Theme.of(context);
     final dividerTheme = Theme.of(context).copyWith(dividerColor: AppColors.darkGray);
-    ScreenUtil.init(context);
-    var deviceWidth = ScreenUtil.screenWidth;
-    var deviceHeight = ScreenUtil.screenHeight;
+    SizeConfig().init(context);
+    var deviceWidth = SizeConfig.screenWidth;
+    var deviceHeight = SizeConfig.screenHeight;
     bloc = BlocProvider.of<CocktailBloc>(context);
     return BlocListener(
       bloc: bloc,
@@ -75,10 +75,13 @@ class _CocktailDetailsViewState extends State<CocktailDetailsView> {
                         children: <Widget>[
                           Container(
                             height: deviceHeight * 0.52,
+                            width: double.infinity,
                             child: Image.network(
                               state.cocktail.thumb,
+                              fit: BoxFit.cover,
                             ),
                           ),
+                          SizedBox(height: 30,),
                           cocktailDetails(_theme),
                           Theme(data: dividerTheme, child: Divider()),
                           CocktailAppExpansionTile(

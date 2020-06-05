@@ -5,10 +5,10 @@
  *
  */
 
+import 'package:cocktailapp/config/size_config.dart';
 import 'package:cocktailapp/config/theme.dart';
 import 'package:cocktailapp/presentation/widgets/data_driven/cocktail_list_view.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/screenutil.dart';
 
 class BaseCocktailTile extends StatelessWidget {
   final VoidCallback onClick;
@@ -32,15 +32,14 @@ class BaseCocktailTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    ScreenUtil.init(context);
+    SizeConfig().init(context);
     return Container(
-//      width: imageWidth + AppSizes.widgetSidePadding,
       width: size == CocktailListSize.small
           ? imageWidth + AppSizes.widgetSidePadding
-          : ScreenUtil.screenWidth / 2,
+          : SizeConfig.screenWidth * 0.7,
       height: size == CocktailListSize.small
           ? tileHeight
-          : ScreenUtil.screenHeight - 400,
+          : SizeConfig.screenHeight - 180,
       padding: EdgeInsets.symmetric(horizontal: AppSizes.widgetSidePadding / 2),
       child: Stack(
         children: <Widget>[
@@ -55,10 +54,10 @@ class BaseCocktailTile extends StatelessWidget {
                   child: Container(
                     width: size == CocktailListSize.small
                         ? imageWidth
-                        : ScreenUtil.screenWidth / 2,
+                        : SizeConfig.screenWidth * 0.7,
                     height: size == CocktailListSize.small
                         ? imageHeight
-                        : ScreenUtil.screenHeight - 500,
+                        : SizeConfig.screenHeight - 255,
                     decoration: BoxDecoration(
                       image: DecorationImage(image: image, fit: BoxFit.cover),
                       color: AppColors.background,

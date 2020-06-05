@@ -6,11 +6,11 @@
  */
 
 import 'package:cocktailapp/config/routes.dart';
+import 'package:cocktailapp/config/size_config.dart';
 import 'package:cocktailapp/config/theme.dart';
 import 'package:cocktailapp/data/model/cocktail.dart';
 import 'package:cocktailapp/presentation/features/cocktail_details/cocktail_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../extensions/cocktail_view.dart';
 
@@ -35,11 +35,11 @@ class CocktailAppCocktailListView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     print('cocktail list length ${cocktails.length}');
-    ScreenUtil.init(context);
+    SizeConfig().init(context);
     return Container(
       padding: EdgeInsets.only(top: AppSizes.sidePadding),
       width: width,
-      height: size == CocktailListSize.small ? height : ScreenUtil.screenHeight - 400,
+      height: size == CocktailListSize.small ? height : SizeConfig.screenHeight - 180,
       child: ListView(
         scrollDirection: Axis.horizontal,
         children: cocktails.map((cocktail) => cocktail.getTileView(
